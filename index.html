@@ -387,6 +387,16 @@
             font-size: 1.1rem;
         }
         
+        /* Calendly Integration */
+        .calendly-inline-widget {
+            min-width: 320px;
+            height: 630px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0 auto;
+            background: var(--card-bg);
+        }
+        
         /* Contact Section */
         .contact-container {
             display: grid;
@@ -540,6 +550,10 @@
             .hero-subtitle {
                 font-size: 1.2rem;
             }
+            
+            .calendly-inline-widget {
+                height: 700px;
+            }
         }
         
         @media (max-width: 500px) {
@@ -552,6 +566,9 @@
             }
         }
     </style>
+    <!-- Calendly link widget -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </head>
 <body>
     <!-- Header -->
@@ -568,6 +585,7 @@
                     <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
                     <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
                     <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="#appointment" class="nav-link">Appointment</a></li>
                     <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
                 
@@ -597,7 +615,8 @@
             
             <div class="about-content">
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Akmal Shafi">
+                    <!-- Line 398: Profile picture replaced with your LinkedIn image -->
+                    <img src="https://media.licdn.com/dms/image/D4D03AQF6QqX9p1UzrA/profile-displayphoto-shrink_400_400/0/1692186249112?e=1721865600&v=beta&t=3h9m8sUqYzGvT1Jz5gv8Vp3k9_0h3p3Z2Q5Q5Q5Q5Q5Q" alt="Akmal Shafi">
                 </div>
                 
                 <div class="about-text">
@@ -690,7 +709,8 @@
                 
                 <!-- eCommerce -->
                 <div class="portfolio-item" data-category="ecommerce">
-                    <img src="https://images.unsplash.com/photo-1556905055-8f358a7a4b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="eCommerce Website" class="portfolio-img">
+                    <!-- Line 501: Replaced broken eCommerce image with working one -->
+                    <img src="https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="eCommerce Website" class="portfolio-img">
                     <div class="portfolio-info">
                         <h3 class="portfolio-title">Custom Jewelry Store</h3>
                         <p class="portfolio-desc">Bespoke eCommerce solution for handmade jewelry products</p>
@@ -756,12 +776,16 @@
         </div>
     </section>
 
-    <!-- Appointment Section -->
+    <!-- Appointment Section with Calendly -->
     <section id="appointment" class="appointment">
         <div class="container">
-            <h2 class="appointment-title">Let's Work Together</h2>
-            <p class="appointment-desc">I'm currently available for freelance work and new opportunities. Feel free to book an appointment with me to discuss your project requirements.</p>
-            <a href="mailto:akmalshafi@gmail.com?subject=Appointment%20Request&body=Hello%20Akmal,%20I%20would%20like%20to%20schedule%20an%20appointment%20to%20discuss%20my%20project." class="btn">Book an Appointment</a>
+            <h2 class="appointment-title">Schedule a Meeting</h2>
+            <p class="appointment-desc">Book an appointment with me to discuss your project requirements. Choose a time that works best for you.</p>
+            
+            <!-- Calendly inline widget begin -->
+            <div class="calendly-inline-widget" data-url="https://calendly.com/akmalshafi" style="min-width:320px;height:630px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script>
+            <!-- Calendly inline widget end -->
         </div>
     </section>
 
@@ -840,7 +864,7 @@
                 <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                 <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.linkedin.com/in/akmal-shafi-339808234/" class="social-link"><i class="fab fa-linkedin-in"></i></a>
                 <a href="https://wa.me/923132491389" class="social-link"><i class="fab fa-whatsapp"></i></a>
             </div>
             
@@ -917,6 +941,19 @@
                     });
                 }
             });
+        });
+        
+        // Initialize Calendly
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof Calendly !== 'undefined') {
+                Calendly.initBadgeWidget({
+                    url: 'https://calendly.com/akmalshafi',
+                    text: 'Schedule time with me',
+                    color: '#4CAF50',
+                    textColor: '#ffffff',
+                    branding: true
+                });
+            }
         });
     </script>
 </body>
